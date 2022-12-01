@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import MainPage from './Pages/MainPage'
+import Navigation from './components/Navigation'
+import AboutUsPage from './Pages/AboutUsPage'
+import FavoritesPage from './Pages/FavoritesPage'
+import CharactersPage from './Pages/CharactersPage'
+import EpisodesPage from './Pages/EpisodesPage'
+import LocationsPage from './Pages/LocationsPage'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navigation />
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/main' element={<MainPage />} />
+        <Route path='/characters' element={<CharactersPage />} />
+        <Route path='/locations' element={<LocationsPage />} />
+        <Route path='/episodes' element={<EpisodesPage />} />
+        <Route path='/favorites' element={<FavoritesPage />} />
+        <Route path='/aboutus' element={<AboutUsPage />} />
+      </Routes>
+    </>
+  )
 }
 
-export default App;
+export default App
