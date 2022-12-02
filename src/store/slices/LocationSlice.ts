@@ -15,7 +15,6 @@ interface LocationState {
   locationsInfo: IDataInfo
   locations: ILocation[]
   favoritesLocations: ILocation[]
-  favoritesLocationsOne: ILocation
 }
 
 const initialState: LocationState = {
@@ -24,9 +23,6 @@ const initialState: LocationState = {
   locationsInfo: infoStateInitial,
   locations: [],
   favoritesLocations: [],
-  favoritesLocationsOne: localStore.get('FAVORITE_LOCATION')
-    ? localStore.get('FAVORITE_LOCATION')
-    : ({} as ILocation),
 }
 
 export const locationSlice = createSlice({
@@ -45,12 +41,6 @@ export const locationSlice = createSlice({
       state.loadingLoc = false
       state.favoritesLocations = action.payload
       state.error = ''
-    },
-    fetchFavoritesSuccessOne(state, action: PayloadAction<ILocation>) {
-      state.loadingLoc = false
-      state.favoritesLocationsOne = action.payload
-      state.error = ''
-      localStore.set('FAVORITE_LOCATION', state.favoritesLocationsOne)
     },
     fetchInfo(state, action: PayloadAction<IDataInfo>) {
       state.locationsInfo = action.payload

@@ -23,6 +23,7 @@ export const fetchCharacters = (
         characterSlice.actions.fetchSuccess(responseCharacters.data.results)
       )
       dispatch(characterSlice.actions.fetchInfo(responseCharacters.data.info))
+      console.log('fetchCharacters', responseCharacters.data.results)
     } catch (e) {
       dispatch(characterSlice.actions.fetchError(e as Error))
     }
@@ -32,19 +33,11 @@ export const fetchCharacters = (
 export const fetchCharactersFavorite = (arr: number[] = []) => {
   return async (dispatch: AppDispatch) => {
     try {
-      dispatch(characterSlice.actions.fetching())
-      const responseCharactersOne = await axios.get<ICharacter>(
-        `character/${arr[0]}`
-      )
-      dispatch(
-        characterSlice.actions.fetchFavoritesSuccessOne(
-          responseCharactersOne.data
-        )
-      )
-      dispatch(characterSlice.actions.fetching())
       const responseCharacters = await axios.get<ICharacter[]>(
         `character/${arr}`
       )
+      dispatch(characterSlice.actions.fetching())
+
       dispatch(
         characterSlice.actions.fetchFavoritesSuccess(responseCharacters.data)
       )

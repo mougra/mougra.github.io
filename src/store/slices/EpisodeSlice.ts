@@ -15,7 +15,6 @@ interface LocationState {
   episodesInfo: IDataInfo
   episodes: IEpisode[]
   favoritesEpisodes: IEpisode[]
-  favoritesEpisodeOne: IEpisode
 }
 
 const initialState: LocationState = {
@@ -24,9 +23,6 @@ const initialState: LocationState = {
   episodesInfo: infoStateInitial,
   episodes: [],
   favoritesEpisodes: [],
-  favoritesEpisodeOne: localStore.get('FAVORITE_EPISODE')
-    ? localStore.get('FAVORITE_EPISODE')
-    : ({} as IEpisode),
 }
 
 export const episodeSlice = createSlice({
@@ -45,12 +41,6 @@ export const episodeSlice = createSlice({
       state.loadingEpis = false
       state.favoritesEpisodes = action.payload
       state.error = ''
-    },
-    fetchFavoritesSuccessOne(state, action: PayloadAction<IEpisode>) {
-      state.loadingEpis = false
-      state.favoritesEpisodeOne = action.payload
-      state.error = ''
-      localStore.set('FAVORITE_EPISODE', state.favoritesEpisodeOne)
     },
     fetchInfo(state, action: PayloadAction<IDataInfo>) {
       state.episodesInfo = action.payload

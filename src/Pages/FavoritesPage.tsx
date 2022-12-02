@@ -17,12 +17,15 @@ function FavoritesPage() {
   const dispatch = useAppDispatch()
   const { userId } = useAppSelector((state) => state.auth)
   const { usersData } = useAppSelector((state) => state.data)
-  const { loading, favoritesCharacters, favoritesCharactersOne } =
-    useAppSelector((state) => state.character)
-  const { loadingLoc, favoritesLocationsOne, favoritesLocations } =
-    useAppSelector((state) => state.location)
-  const { loadingEpis, favoritesEpisodes, favoritesEpisodeOne } =
-    useAppSelector((state) => state.episode)
+  const { loading, favoritesCharacters } = useAppSelector(
+    (state) => state.character
+  )
+  const { loadingLoc, favoritesLocations } = useAppSelector(
+    (state) => state.location
+  )
+  const { loadingEpis, favoritesEpisodes } = useAppSelector(
+    (state) => state.episode
+  )
 
   const [isCard, setisCard] = useState(1)
 
@@ -49,7 +52,7 @@ function FavoritesPage() {
           Избранное
         </h2>
       </div>
-      <div className='flex flew-wrap justify-between mb-[38px] cursor-pointer'>
+      <div className='flex flew-wrap justify-between mb-[78px] cursor-pointer'>
         <img
           src={Location}
           alt='imgAddFavorites'
@@ -86,8 +89,8 @@ function FavoritesPage() {
 
       {!loading && isCard === 1 && (
         <div className='flex flex-wrap justify-between'>
-          {usersData[userId].charactersData.length > 1 &&
-            favoritesCharacters.map((character) => (
+          {usersData[userId].charactersData.length >= 1 &&
+            Array.from(favoritesCharacters).map((character) => (
               <CharactersCard
                 key={character.id}
                 character={character}
@@ -95,13 +98,14 @@ function FavoritesPage() {
                 isFavorite={true}
               />
             ))}
-          {usersData[userId].charactersData.length === 1 && (
-            <CharactersCard
-              character={favoritesCharactersOne}
-              displayCard={true}
-              isFavorite={true}
-            />
-          )}
+          {usersData[userId].charactersData.length == 1 &&
+            !Array.isArray(favoritesCharacters) && (
+              <CharactersCard
+                character={favoritesCharacters}
+                displayCard={true}
+                isFavorite={true}
+              />
+            )}
           {usersData[userId].charactersData.length === 0 && (
             <p className='font-medium text-5xl mx-auto'>
               У вас пока нет избранных персонажей
@@ -120,13 +124,14 @@ function FavoritesPage() {
                 isFavorite={true}
               />
             ))}
-          {usersData[userId].locationsData.length === 1 && (
-            <LocationsCard
-              location={favoritesLocationsOne}
-              displayCard={true}
-              isFavorite={true}
-            />
-          )}
+          {usersData[userId].locationsData.length == 1 &&
+            !Array.isArray(favoritesLocations) && (
+              <LocationsCard
+                location={favoritesLocations}
+                displayCard={true}
+                isFavorite={true}
+              />
+            )}
           {usersData[userId].locationsData.length === 0 && (
             <p className='font-medium text-5xl mx-auto'>
               У вас пока нет избранных локаций
@@ -145,13 +150,14 @@ function FavoritesPage() {
                 isFavorite={true}
               />
             ))}
-          {usersData[userId].episodesData.length === 1 && (
-            <EpisodeCard
-              episode={favoritesEpisodeOne}
-              displayCard={true}
-              isFavorite={true}
-            />
-          )}
+          {usersData[userId].episodesData.length == 1 &&
+            !Array.isArray(favoritesEpisodes) && (
+              <EpisodeCard
+                episode={favoritesEpisodes}
+                displayCard={true}
+                isFavorite={true}
+              />
+            )}
           {usersData[userId].episodesData.length === 0 && (
             <p className='font-medium text-5xl mx-auto'>
               У вас пока нет избранных эпизодов

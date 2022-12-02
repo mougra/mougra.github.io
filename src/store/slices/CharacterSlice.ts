@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ICharacter, IDataInfo } from '../../models/models'
-import { localStore } from '../localStore'
 
 const infoStateInitial: IDataInfo = {
   count: 0,
@@ -14,7 +13,6 @@ interface CharacterState {
   charactersInfo: IDataInfo
   characters: ICharacter[]
   favoritesCharacters: ICharacter[]
-  favoritesCharactersOne: ICharacter
 }
 
 const initialState: CharacterState = {
@@ -23,9 +21,6 @@ const initialState: CharacterState = {
   charactersInfo: infoStateInitial,
   characters: [],
   favoritesCharacters: [],
-  favoritesCharactersOne: localStore.get('FAVORITE_CHARACTER')
-    ? localStore.get('FAVORITE_CHARACTER')
-    : ({} as ICharacter),
 }
 
 export const characterSlice = createSlice({
@@ -44,12 +39,6 @@ export const characterSlice = createSlice({
       state.loading = false
       state.favoritesCharacters = action.payload
       state.error = ''
-    },
-    fetchFavoritesSuccessOne(state, action: PayloadAction<ICharacter>) {
-      state.loading = false
-      state.favoritesCharactersOne = action.payload
-      state.error = ''
-      localStore.set('FAVORITE_CHARACTER', state.favoritesCharactersOne)
     },
     fetchInfo(state, action: PayloadAction<IDataInfo>) {
       state.charactersInfo = action.payload

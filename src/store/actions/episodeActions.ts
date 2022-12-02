@@ -29,11 +29,6 @@ export const fetchEpisodesFavorite = (arr: number[] = []) => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(episodeSlice.actions.fetching())
-      const responseEpisodeOne = await axios.get<IEpisode>(`episode/${arr[0]}`)
-      dispatch(
-        episodeSlice.actions.fetchFavoritesSuccessOne(responseEpisodeOne.data)
-      )
-      dispatch(episodeSlice.actions.fetching())
       const responseEpisodes = await axios.get<IEpisode[]>(`episode/${arr}`)
       dispatch(
         episodeSlice.actions.fetchFavoritesSuccess(responseEpisodes.data)

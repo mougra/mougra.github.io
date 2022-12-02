@@ -18,7 +18,7 @@ interface ModalProps {
 const Login = ({ login, setLogin }: ModalProps) => {
   const dispatch = useAppDispatch()
   const [passwordSee, setPasswordSee] = useState(false)
-  const [saveStorage, setsaveStorage] = useState(false)
+  const [saveStorage, setsaveStorage] = useState(true)
 
   const authLoginEmail = useInput('', {
     isEmpty: true,
@@ -170,7 +170,10 @@ const Login = ({ login, setLogin }: ModalProps) => {
                 type='checkbox'
                 id='reg_checkbox'
                 name='reg_checkbox'
-                onChange={() => setsaveStorage(true)}
+                checked={saveStorage ? true : false}
+                onChange={() =>
+                  saveStorage ? setsaveStorage(false) : setsaveStorage(true)
+                }
               />
               <label htmlFor='reg_checkbox' className='select-none'>
                 Запомнить
