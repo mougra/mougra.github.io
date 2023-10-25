@@ -65,12 +65,10 @@ function CharactersCard({
   const episodesRange = qwert()
 
   const handleMouseEnter = (e: React.SyntheticEvent<EventTarget>) => {
-    // console.log('фокус на родительском элементе установлен', e.currentTarget)
     setAddFavorite(1)
   }
 
   const handleMouseLeave = () => {
-    // console.log('фокус на родительском элементе снят')
     setAddFavorite(0)
   }
 

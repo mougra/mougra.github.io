@@ -106,7 +106,7 @@ const Registration = ({ registration, setRegistration }: ModalProps) => {
           alt='morty'
           className='absolute right-[-175px] top-[-30px] content-none -z-10'
         />
-        <div className='flex flex-col gap-y-[48px] py-9 px-5 items-center bg-white test_border'>
+        <div className='flex flex-col gap-y-[48px] py-9 px-5 items-center bg-white rounded-md'>
           <h2 className='text-5xl'>Регистрация</h2>
           <form
             className='flex flex-col items-start gap-y-[35px]'
@@ -194,7 +194,7 @@ const Registration = ({ registration, setRegistration }: ModalProps) => {
             </div>
             <div className='relative input_container'>
               <input
-                type={passwordSee ? 'text' : 'password'}
+                type={!passwordSee ? 'text' : 'password'}
                 value={password.value}
                 onChange={(e) => password.onChange(e)}
                 onBlur={(e) => password.onBlur(e)}
@@ -206,7 +206,7 @@ const Registration = ({ registration, setRegistration }: ModalProps) => {
                 }
               />
               <img
-                src={passwordSee ? PassordSeeImg : PassordUnSeeImg}
+                src={!passwordSee ? PassordSeeImg : PassordUnSeeImg}
                 alt='watch_passord'
                 className='absolute right-[15px] top-[8px] content-none'
                 onClick={() => {
@@ -222,7 +222,7 @@ const Registration = ({ registration, setRegistration }: ModalProps) => {
             </div>
             <div className='relative input_container mb-5'>
               <input
-                type={passwordRepeatSee ? 'text' : 'password'}
+                type={!passwordRepeatSee ? 'text' : 'password'}
                 value={repeatPassword.value}
                 onChange={(e) => repeatPassword.onChange(e)}
                 onBlur={(e) => repeatPassword.onBlur(e)}
@@ -234,7 +234,7 @@ const Registration = ({ registration, setRegistration }: ModalProps) => {
                 }
               />
               <img
-                src={passwordRepeatSee ? PassordSeeImg : PassordUnSeeImg}
+                src={!passwordRepeatSee ? PassordSeeImg : PassordUnSeeImg}
                 alt='watch_password'
                 className='absolute right-[15px] top-[8px] content-none'
                 onClick={() => {

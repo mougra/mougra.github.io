@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IDataInfo, ILocation } from '../../models/models'
-import { localStore } from '../localStore'
 
 const infoStateInitial: IDataInfo = {
   count: 0,

@@ -236,3 +236,45 @@ body {
   padding-top: 5.5px;
   padding-bottom: 5.5px;
 }
+.paginate__li a {
+  display: block;
+  padding: 4px 12px;
+}
+.input_container img {
+  width: 24px;
+  height: 24px;
+}
+
+.radio-input:checked + span {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 9 9' fill='none'%3e%3cpath d='M7.60687 0.747559L3.375 5.08518L1.39275 3.20606L0 4.59956L3.375 7.87256L9 2.14068L7.60687 0.747559Z' fill='%2300CA51'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.radio-input:checked + span:after {
+  opacity: 1;
+}
+
+.custom-radio {
+  left: -6px;
+  top: 3px;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  border: 1px solid rgba(161, 161, 161, 0.6);
+  background: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}

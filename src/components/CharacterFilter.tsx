@@ -3,7 +3,6 @@ import blockDisplayBlack from '../assets/image/burgerBlack.svg'
 import blockDisplayRed from '../assets/image/burgerRed.svg'
 import lineDisplayBlack from '../assets/image/winBlack.svg'
 import lineDisplayRed from '../assets/image/winRed.svg'
-import { useAppDispatch } from './../hook/redux'
 
 interface ModalProps {
   displayCard: boolean
@@ -12,7 +11,6 @@ interface ModalProps {
   raceInput: any
   selected: any
   setSelected(active: string): void
-  // setSelected: any
   debouncedName: any
   debouncedRace: any
 }

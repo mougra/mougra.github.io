@@ -104,7 +104,7 @@ const Login = ({ login, setLogin }: ModalProps) => {
           alt='morty'
           className='absolute right-[-175px] top-[-30px] content-none -z-10'
         />
-        <div className='flex flex-col gap-y-[48px] py-9 px-5 items-center bg-white test_border'>
+        <div className='flex flex-col gap-y-[48px] py-9 px-5 items-center bg-white rounded-md'>
           <h2 className='text-5xl'>Вход</h2>
           <form
             className='flex flex-col items-start gap-y-[35px]'
@@ -139,7 +139,7 @@ const Login = ({ login, setLogin }: ModalProps) => {
 
             <div className='relative input_container'>
               <input
-                type={passwordSee ? 'text' : 'password'}
+                type={!passwordSee ? 'text' : 'password'}
                 value={authPassword.value}
                 onChange={(e) => authPassword.onChange(e)}
                 onBlur={(e) => authPassword.onBlur(e)}
@@ -151,7 +151,7 @@ const Login = ({ login, setLogin }: ModalProps) => {
                 }
               />
               <img
-                src={passwordSee ? PassordSeeImg : PassordUnSeeImg}
+                src={!passwordSee ? PassordSeeImg : PassordUnSeeImg}
                 alt='watch_passord'
                 className='absolute right-[15px] top-[8px] content-none'
                 onClick={() => {
@@ -165,17 +165,19 @@ const Login = ({ login, setLogin }: ModalProps) => {
                 </div>
               )}
             </div>
-            <div className='flex gap-2.5 text-sm'>
-              <input
-                type='checkbox'
-                id='reg_checkbox'
-                name='reg_checkbox'
-                checked={saveStorage ? true : false}
-                onChange={() =>
-                  saveStorage ? setsaveStorage(false) : setsaveStorage(true)
-                }
-              />
-              <label htmlFor='reg_checkbox' className='select-none'>
+            <div className='text-sm'>
+              <label htmlFor='reg_checkbox' className='select-none ml-2'>
+                <input
+                  className='hidden radio-input'
+                  type='checkbox'
+                  id='reg_checkbox'
+                  name='reg_checkbox'
+                  checked={saveStorage ? true : false}
+                  onChange={() =>
+                    saveStorage ? setsaveStorage(false) : setsaveStorage(true)
+                  }
+                />
+                <span className='custom-radio' />
                 Запомнить
               </label>
               <span></span>
