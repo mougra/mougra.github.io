@@ -20,7 +20,7 @@ function Navigation() {
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault()
     dispatch(logoutUser())
-    navigate('/main')
+    navigate('/')
   }
 
   return (
@@ -32,16 +32,16 @@ function Navigation() {
       <Login login={loginActive} setLogin={setloginActive}></Login>
       <nav className=' mx-auto px-[15px] p-[38px] max-w-[1200px] flex justify-between min-h-[74px] items-center font-bold'>
         <div className='flex flex-wrap items-center gap-[93px]'>
-          <Link to='/main'>
+          <Link to='#'>
             <img src={logo} alt='logo' />
           </Link>
           <div className='flex gap-7 items-center flex-wrap'>
             <NavLink
-              to='/main'
+              to='/'
               className={({ isActive }) =>
                 isActive
-                  ? 'text-[#ff0000] border-b-[1px] border-[#ff0000] transition duration-200 ease-in-out'
-                  : 'hover:text-[#ff0000] transition duration-200 ease-in-out'
+                  ? 'text-[#ff0000] border-b-[1px] border-[#ff0000] transition duration-200 ease-in-out font-bold'
+                  : 'hover:text-[#ff0000] transition duration-200 ease-in-out font-medium'
               }
             >
               Главная
@@ -51,8 +51,8 @@ function Navigation() {
                 to='/favorites'
                 className={({ isActive }) =>
                   isActive
-                    ? 'text-[#ff0000] border-b-[1px] border-[#ff0000] transition duration-200 ease-in-out'
-                    : 'hover:text-[#ff0000] transition duration-200 ease-in-out'
+                    ? 'text-[#ff0000] border-b-[1px] border-[#ff0000] transition duration-200 ease-in-out font-bold'
+                    : 'hover:text-[#ff0000] transition duration-200 ease-in-out font-medium'
                 }
               >
                 Избранное
@@ -62,8 +62,8 @@ function Navigation() {
               to='/aboutus'
               className={({ isActive }) =>
                 isActive
-                  ? 'text-[#ff0000] border-b-[1px] border-[#ff0000] transition duration-200 ease-in-out'
-                  : 'hover:text-[#ff0000] transition duration-200 ease-in-out'
+                  ? 'text-[#ff0000] border-b-[1px] border-[#ff0000] transition duration-200 ease-in-out font-bold'
+                  : 'hover:text-[#ff0000] transition duration-200 ease-in-out font-medium'
               }
             >
               О проекте

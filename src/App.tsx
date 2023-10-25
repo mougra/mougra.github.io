@@ -7,14 +7,15 @@ import FavoritesPage from './Pages/FavoritesPage'
 import CharactersPage from './Pages/CharactersPage'
 import EpisodesPage from './Pages/EpisodesPage'
 import LocationsPage from './Pages/LocationsPage'
+import NotFound from './Pages/NotFound'
 
 function App() {
   return (
     <>
       <Navigation />
       <Routes>
+        <Route path='*' element={<NotFound />} />
         <Route path='/' element={<MainPage />} />
-        <Route path='/main' element={<MainPage />} />
         <Route path='/characters' element={<CharactersPage />} />
         <Route path='/locations' element={<LocationsPage />} />
         <Route path='/episodes' element={<EpisodesPage />} />
